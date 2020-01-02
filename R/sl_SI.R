@@ -924,18 +924,6 @@ date_time_sl_SI = R6Class(
       "11" = "November",
       "12" = "December"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 # address ---------------------------------------
@@ -2558,15 +2546,15 @@ internet_sl_SI = R6Class(
   inherit = internet_init,
   cloneable = FALSE,
   private = list(
-    first_names = (person_sl_SI$new())$.__enclos_env__$private$first_names,
-    last_names = (person_sl_SI$new())$.__enclos_env__$private$last_names,
-    first_name = (person_sl_SI$new())$first_name,
-    last_name = (person_sl_SI$new())$last_name,
+    first_names = (person_en_US$new())$.__enclos_env__$private$first_names,
+    last_names = (person_en_US$new())$.__enclos_env__$private$last_names,
+    first_name = (person_en_US$new())$first_name,
+    last_name = (person_en_US$new())$last_name,
 
-    first_names_female = (person_sl_SI$new())$.__enclos_env__$private$first_names_female,
-    first_names_male = (person_sl_SI$new())$.__enclos_env__$private$first_names_male,
-    first_name_female = (person_sl_SI$new())$first_name_female,
-    first_name_male = (person_sl_SI$new())$first_name_male,
+    first_names_female = (person_en_US$new())$.__enclos_env__$private$first_names_female,
+    first_names_male = (person_en_US$new())$.__enclos_env__$private$first_names_male,
+    first_name_female = (person_en_US$new())$first_name_female,
+    first_name_male = (person_en_US$new())$first_name_male,
 
     user_name_formats = c(
       '{last_name}.{first_name_female}',

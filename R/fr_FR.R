@@ -907,18 +907,6 @@ date_time_fr_FR = R6Class(
       "11" = "Novembre",
       "12" = "D\u00e9cembre"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 
@@ -3616,7 +3604,7 @@ internet_fr_FR = R6Class(
       company = (company_fr_FR$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     },
     slug = function(string) {
       string = ifelse(missing(string),

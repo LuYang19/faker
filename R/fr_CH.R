@@ -963,7 +963,7 @@ internet_fr_CH = R6Class(
       company = (company_fr_CH$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     }
   )
 )

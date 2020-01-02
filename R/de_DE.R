@@ -1079,7 +1079,7 @@ address_de_DE = R6Class(
 ## internet -------------------------------
 internet_de_DE = R6Class(
   "internet_de_DE",
-  inherit = internet_init,
+  inherit = internet_en_US,
   cloneable = FALSE,
   private = list(
     first_names = (person_de_DE$new())$.__enclos_env__$private$first_names,
@@ -1108,7 +1108,7 @@ internet_de_DE = R6Class(
       company = (company_de_DE$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     }
   )
 )

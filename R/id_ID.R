@@ -420,18 +420,6 @@ date_time_id_ID = R6Class(
       "11" = "November",
       "12" = "Desember"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 

@@ -2388,26 +2388,6 @@ company_ka_GE = R6Class(
   )
 )
 
-# internet -------------------------
-internet_ka_GE = R6Class(
-  "internet_ka_GE",
-  inherit = internet_init,
-  cloneable = FALSE,
-  private = list(
-    first_names = (person_ka_GE$new())$.__enclos_env__$private$first_names,
-    last_names = (person_ka_GE$new())$.__enclos_env__$private$last_names,
-    first_name = (person_ka_GE$new())$first_name,
-    last_name = (person_ka_GE$new())$last_name
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_ka_GE$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = TRUE))
-    }
-  )
-)
 # profile   ------------
 profile_ka_GE = R6Class(
   "profile_ka_GE",
@@ -2428,11 +2408,11 @@ profile_ka_GE = R6Class(
                     (person_ka_GE$new())$name_female(),
                     (person_ka_GE$new())$name_male())
       temp = list(
-        "username" = (internet_ka_GE$new())$user_name(),
+        "username" = (internet_en_US$new())$user_name(),
         "name" = name,
         "sex" = sex,
         "address" = (address_ka_GE$new())$address(),
-        "mail" = (internet_ka_GE$new())$free_email(),
+        "mail" = (internet_en_US$new())$free_email(),
         "birthdate" = (date_time_init$new())$date_of_birth()
       )
       return(temp)
@@ -2453,7 +2433,7 @@ profile_ka_GE = R6Class(
                                (geo_init$new())$longitude()),
         "blood_group" = sample(c(
           "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"), 1),
-        "website" = replicate(sample(seq(4), 1), (internet_ka_GE$new())$url())
+        "website" = replicate(sample(seq(4), 1), (internet_en_US$new())$url())
       )
 
       field = append(field, self$simple_profile(sex))

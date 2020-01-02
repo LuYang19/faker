@@ -1458,18 +1458,6 @@ date_time_hr_HR = R6Class(
       "11" = "Studeni",
       "12" = "Prosinac"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 # address -----------------------------------------------

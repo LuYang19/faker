@@ -212,7 +212,7 @@ internet_de_AT = R6Class(
       company = (company_de_AT$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     }
   )
 )

@@ -2863,34 +2863,6 @@ file_he_IL = R6Class(
   )
 )
 
-# internet --------------------------------
-internet_he_IL = R6Class(
-  "internet_he_IL",
-  inherit = internet_init,
-  cloneable = FALSE,
-  private = list(
-    locale = "he_IL",
-    first_names = (person_he_IL$new())$.__enclos_env__$private$first_names,
-    last_names = (person_he_IL$new())$.__enclos_env__$private$last_names,
-    first_name = (person_he_IL$new())$first_name,
-    last_name = (person_he_IL$new())$last_name
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_he_IL$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = TRUE))
-    },
-
-    slug = function(string) {
-      string = ifelse(missing(string),
-                      (lorem_he_IL$new())$text(max_nb_chars = 20),
-                      string)
-      return(private$slugify(string))
-    }
-  )
-)
 # phone_number ------------------------------------
 phone_number_he_IL = R6Class(
   "phone_number_he_IL",
@@ -2968,11 +2940,11 @@ profile_he_IL = R6Class(
                     (person_he_IL$new())$name_female(),
                     (person_he_IL$new())$name_male())
       temp = list(
-        "username" = (internet_he_IL$new())$user_name(),
+        "username" = (internet_en_US$new())$user_name(),
         "name" = name,
         "sex" = sex,
         "address" = (address_he_IL$new())$address(),
-        "mail" = (internet_he_IL$new())$free_email(),
+        "mail" = (internet_en_US$new())$free_email(),
         "birthdate" = (date_time_init$new())$date_of_birth()
       )
       return(temp)
@@ -2993,7 +2965,7 @@ profile_he_IL = R6Class(
                                (geo_init$new())$longitude()),
         "blood_group" = sample(c(
           "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"), 1),
-        "website" = replicate(sample(seq(4), 1), (internet_he_IL$new())$url())
+        "website" = replicate(sample(seq(4), 1), (internet_en_US$new())$url())
       )
 
       field = append(field, self$simple_profile(sex))

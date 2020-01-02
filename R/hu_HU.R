@@ -676,18 +676,6 @@ date_time_hu_HU = R6Class(
       "11" = "november",
       "12" = "december"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 # address ---------------------------------------

@@ -1896,18 +1896,6 @@ date_time_hy_AM = R6Class(
       "11" = "\u0546\u0578\u0575\u0565\u0574\u0562\u0565\u0580",
       "12" = "\u0534\u0565\u056f\u057f\u0565\u0574\u0562\u0565\u0580"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 
@@ -2532,9 +2520,9 @@ address_hy_AM = R6Class(
 
     postcode = function(){
       num = as.character(private$random_int(200, 4299))
-      if(nchar(num) < 4){
+      if(str_count(num) < 4){
         num = str_c(str_c(
-          rep(0, 4 - nchar(num)), collapse = ""), num)
+          rep(0, 4 - str_count(num)), collapse = ""), num)
       }
       return(num)
     },
@@ -2549,7 +2537,7 @@ address_hy_AM = R6Class(
           private$random_int(
             private$states_postcode[[state_abbr]][1],
             private$states_postcode[[state_abbr]][2]))
-        if (nchar(postcode) == 3){
+        if (str_count(postcode) == 3){
           postcode = str_c("0", postcode)
         }
         return(postcode)
@@ -3099,33 +3087,6 @@ file_hy_AM = R6Class(
   )
 )
 
-# internet --------------------------------
-internet_hy_AM = R6Class(
-  "internet_hy_AM",
-  inherit = internet_init,
-  cloneable = FALSE,
-  private = list(
-    first_names = (person_hy_AM$new())$.__enclos_env__$private$first_names,
-    last_names = (person_hy_AM$new())$.__enclos_env__$private$last_names,
-    first_name = (person_hy_AM$new())$first_name,
-    last_name = (person_hy_AM$new())$last_name
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_hy_AM$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = TRUE))
-    },
-
-    slug = function(string) {
-      string = ifelse(missing(string),
-                      (lorem_hy_AM$new())$text(max_nb_chars = 20),
-                      string)
-      return(private$slugify(string))
-    }
-  )
-)
 # phone_number --------------------------------------
 phone_number_hy_AM = R6Class(
   "phone_number_hy_AM",
@@ -3168,11 +3129,11 @@ profile_hy_AM = R6Class(
                     (person_hy_AM$new())$name_female(),
                     (person_hy_AM$new())$name_male())
       temp = list(
-        "username" = (internet_hy_AM$new())$user_name(),
+        "username" = (internet_en_US$new())$user_name(),
         "name" = name,
         "sex" = sex,
         "address" = (address_hy_AM$new())$address(),
-        "mail" = (internet_hy_AM$new())$free_email(),
+        "mail" = (internet_en_US$new())$free_email(),
         "birthdate" = (date_time_init$new())$date_of_birth()
       )
       return(temp)
@@ -3193,7 +3154,7 @@ profile_hy_AM = R6Class(
                                (geo_init$new())$longitude()),
         "blood_group" = sample(c(
           "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"), 1),
-        "website" = replicate(sample(seq(4), 1), (internet_hy_AM$new())$url())
+        "website" = replicate(sample(seq(4), 1), (internet_en_US$new())$url())
       )
 
       field = append(field, self$simple_profile(sex))

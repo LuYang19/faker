@@ -685,7 +685,7 @@ credit_card_cs_CZ = R6Class(
 ## address ----------------------
 address_cs_CZ = R6Class(
   "address_cs_CZ",
-  inherit = address_en_US,
+  inherit = address_init,
   cloneable = FALSE,
   private = list(
     city_formats = "{city_name}",
@@ -1890,7 +1890,7 @@ internet_cs_CZ = R6Class(
       company = (company_cs_CZ$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     }
   )
 )

@@ -1,4 +1,8 @@
 ## faker ---------------------------------------
+#' Generates fake data by locale.
+#' 
+#' @param locale A Character.
+#' return a R6 for fake data.
 faker = function(locale) {
   if(missing(locale)) return(faker_en_US$new())
   generator = eval(parse(text = str_c("faker_", locale)))
@@ -82,7 +86,7 @@ faker_la = R6Class(
 ## faker_ar_AA ------------------------------------------------
 faker_ar_AA = R6Class(
   "faker_ar_AA",
-  inherit = faker_en_US,
+  inherit = faker_la,
   cloneable = FALSE,
   public = list(
     address = address_ar_AA$new(),
@@ -104,6 +108,7 @@ faker_ar_EG = R6Class(
   cloneable = FALSE,
   inherit = faker_la,
   public = list(
+    internet = internet_en_US$new(),
     date_time = date_time_ar_EG$new()
   )
 )
@@ -113,6 +118,7 @@ faker_ar_JO = R6Class(
   inherit = faker_la,
   cloneable = FALSE,
   public = list(
+    internet = internet_en_US$new(),
     automotive = automotive_ar_JO$new(),
     phone_number = phone_number_ar_JO$new()
   )
@@ -129,7 +135,7 @@ faker_ar_PS = R6Class(
     color = color_ar_PS$new(),
     company = company_ar_PS$new(),
     credit_card = credit_card_ar_PS$new(),
-    internet = internet_ar_PS$new(),
+    internet = internet_en_US$new(),
     person = person_ar_PS$new(),
     phone_number = phone_number_ar_PS$new(),
     profile = profile_ar_PS$new()
@@ -145,7 +151,7 @@ faker_ar_SA = R6Class(
     automotive = automotive_ar_SA$new(),
     company = company_ar_SA$new(),
     credit_card = credit_card_ar_SA$new(),
-    internet = internet_ar_SA$new(),
+    internet = internet_en_US$new(),
     person = person_ar_SA$new(),
     profile = profile_ar_SA$new()
   )
@@ -248,8 +254,8 @@ faker_de_CH = R6Class(
     ssn = ssn_de_CH$new(),
     company = company_de_CH$new(),
     credit_card = credit_card_de_CH$new(),
+    internet = internet_en_US$new(),
     address = address_de_CH$new(),
-    internet = internet_de_CH$new(),
     profile = profile_de_CH$new()
   )
 )
@@ -264,8 +270,8 @@ faker_dk_DK = R6Class(
     ssn = ssn_dk_DK$new(),
     company = company_dk_DK$new(),
     credit_card = credit_card_dk_DK$new(),
+    internet = internet_en_US$new(),
     address = address_dk_DK$new(),
-    internet = internet_dk_DK$new(),
     phone_number = phone_number_dk_DK$new(),
     profile = profile_dk_DK$new()
   )
@@ -277,6 +283,7 @@ faker_el_CY = R6Class(
   cloneable = FALSE,
   public = list(
     ssn = ssn_el_CY$new(),
+    internet = internet_en_US$new(),
     profile = profile_el_CY$new()
   )
 )
@@ -321,6 +328,7 @@ faker_en_CA = R6Class(
     address = address_en_CA$new(),
     automotive = automotive_en_CA$new(),
     phone_number = phone_number_en_CA$new(),
+    internet = internet_en_US$new(),
     ssn = ssn_en_CA$new(),
     profile = profile_en_CA$new()
   )
@@ -350,6 +358,7 @@ faker_en_IE = R6Class(
   cloneable = FALSE,
   public = list(
     ssn = ssn_en_IE$new(),
+    internet = internet_en_US$new(),
     profile = profile_en_IE$new()
   )
 )
@@ -395,7 +404,7 @@ faker_es_ES = R6Class(
     company = company_es_ES$new(),
     credit_card = credit_card_es_ES$new(),
     address = address_es_ES$new(),
-    internet = internet_es_ES$new(),
+    internet = internet_en_US$new(),
     phone_number = phone_number_es_ES$new(),
     ssn = ssn_es_ES$new(),
     profile = profile_es_ES$new()
@@ -417,7 +426,7 @@ faker_es_CA = R6Class(
     company = company_es_CA$new(),
     credit_card = credit_card_es_CA$new(),
     address = address_es_CA$new(),
-    internet = internet_es_CA$new(),
+    internet = internet_en_US$new(),
     ssn = ssn_es_ES$new(),
     profile = profile_es_CA$new()
   )
@@ -436,7 +445,7 @@ faker_es_MX = R6Class(
     phone_number = phone_number_es_MX$new(),
     ssn = ssn_es_MX$new(),
     credit_card = credit_card_es_MX$new(),
-    internet = internet_es_MX$new(),
+    internet = internet_en_US$new(),
     profile = profile_es_MX$new()
   )
 )
@@ -452,7 +461,7 @@ faker_et_EE = R6Class(
     address = address_et_EE$new(),
     company = company_et_EE$new(),
     credit_card = credit_card_et_EE$new(),
-    internet = internet_et_EE$new(),
+    internet = internet_en_US$new(),
     profile = profile_et_EE$new()
   )
 )
@@ -544,7 +553,7 @@ faker_he_IL = R6Class(
     address = address_he_IL$new(),
     company = company_he_IL$new(),
     credit_card = credit_card_he_IL$new(),
-    internet = internet_he_IL$new(),
+    internet = internet_en_US$new(),
     phone_number = phone_number_he_IL$new(),
     lorem = lorem_he_IL$new(),
     file = file_he_IL$new(),
@@ -563,7 +572,7 @@ faker_hi_IN = R6Class(
     address = address_hi_IN$new(),
     company = company_hi_IN$new(),
     credit_card = credit_card_hi_IN$new(),
-    internet = internet_hi_IN$new(),
+    internet = internet_en_US$new(),
     phone_number = phone_number_hi_IN$new(),
     profile = profile_hi_IN$new()
   )
@@ -621,7 +630,7 @@ faker_hy_AM = R6Class(
     date_time = date_time_hy_AM$new(),
     company = company_hy_AM$new(),
     credit_card = credit_card_hy_AM$new(),
-    internet = internet_hy_AM$new(),
+    internet = internet_en_US$new(),
     job = job_hy_AM$new(),
     phone_number = phone_number_hy_AM$new(),
     lorem = lorem_hy_AM$new(),
@@ -694,7 +703,7 @@ faker_ka_GE = R6Class(
     address = address_ka_GE$new(),
     company = company_ka_GE$new(),
     credit_card = credit_card_ka_GE$new(),
-    internet = internet_ka_GE$new(),
+    internet = internet_en_US$new(),
     profile = profile_ka_GE$new()
   )
 )
@@ -724,6 +733,7 @@ faker_lb_LU = R6Class(
   cloneable = FALSE,
   public = list(
     ssn = ssn_lb_LU$new(),
+    internet = internet_en_US$new(),
     profile = profile_lb_LU$new()
   )
 )
@@ -740,7 +750,7 @@ faker_lt_LT = R6Class(
     credit_card = credit_card_lt_LT$new(),
     company = company_lt_LT$new(),
     address = address_lt_LT$new(),
-    internet = internet_lt_LT$new(),
+    internet = internet_en_US$new(),
     profile = profile_lt_LT$new()
   )
 )
@@ -757,7 +767,7 @@ faker_lv_LV = R6Class(
     credit_card = credit_card_lv_LV$new(),
     company = company_lv_LV$new(),
     address = address_lv_LV$new(),
-    internet = internet_lv_LV$new(),
+    internet = internet_en_US$new(),
     profile = profile_lv_LV$new()
   )
 )
@@ -769,6 +779,7 @@ faker_mt_MT = R6Class(
   cloneable = FALSE,
   public = list(
     ssn = ssn_mt_MT$new(),
+    internet = internet_en_US$new(),
     profile = profile_mt_MT$new()
   )
 )
@@ -784,7 +795,7 @@ faker_ne_NP = R6Class(
     credit_card = credit_card_ne_NP$new(),
     company = company_ne_NP$new(),
     address = address_ne_NP$new(),
-    internet = internet_ne_NP$new(),
+    internet = internet_en_US$new(),
     profile = profile_ne_NP$new()
   )
 )
@@ -797,6 +808,7 @@ faker_nl_BE = R6Class(
   public = list(
     phone_number = phone_number_nl_BE$new(),
     address = address_nl_BE$new(),
+    internet = internet_en_US$new(),
     ssn = ssn_nl_BE$new(),
     profile = profile_nl_BE$new()
   )
@@ -815,7 +827,7 @@ faker_nl_NL = R6Class(
     phone_number = phone_number_nl_NL$new(),
     ssn = ssn_nl_NL$new(),
     credit_card = credit_card_nl_NL$new(),
-    internet = internet_nl_NL$new(),
+    internet = internet_en_US$new(),
     profile = profile_nl_NL$new()
   )
 )
@@ -895,7 +907,7 @@ faker_pt_PT = R6Class(
     person = person_pt_PT$new(),
     company = company_pt_PT$new(),
     address = address_pt_PT$new(),
-    internet = internet_pt_PT$new(),
+    internet = internet_en_US$new(),
     phone_number = phone_number_pt_PT$new(),
     ssn = ssn_pt_PT$new(),
     credit_card = credit_card_pt_PT$new(),
@@ -914,7 +926,7 @@ faker_ro_RO = R6Class(
     person = person_ro_RO$new(),
     company = company_ro_RO$new(),
     address = address_ro_RO$new(),
-    internet = internet_ro_RO$new(),
+    internet = internet_en_US$new(),
     ssn = ssn_ro_RO$new(),
     credit_card = credit_card_ro_RO$new(),
     profile = profile_ro_RO$new()
@@ -1018,7 +1030,7 @@ faker_th_TH = R6Class(
     address = address_th_TH$new(),
     credit_card = credit_card_th_TH$new(),
     phone_number = phone_number_th_TH$new(),
-    internet = internet_th_TH$new(),
+    internet = internet_en_US$new(),
     job = job_th_TH$new(),
     profile = profile_th_TH$new()
   )
@@ -1037,7 +1049,7 @@ faker_tr_TR = R6Class(
     company = company_tr_TR$new(),
     address = address_tr_TR$new(),
     credit_card = credit_card_tr_TR$new(),
-    internet = internet_tr_TR$new(),
+    internet = internet_en_US$new(),
     profile = profile_tr_TR$new()
   )
 )
@@ -1096,6 +1108,7 @@ faker_zh_CN = R6Class(
     company = company_zh_CN$new(),
     address = address_zh_CN$new(),
     credit_card = credit_card_zh_CN$new(),
+    date_time = date_time_zh_CN$new(),
     phone_number = phone_number_zh_CN$new(),
     lorem = lorem_zh_CN$new(),
     file = file_zh_CN$new(),

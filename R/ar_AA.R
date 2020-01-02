@@ -3059,6 +3059,16 @@ date_time_ar_AA = R6Class(
       if (datetime %in% c(seq(11), 24)) temp = "AM"
       else temp = "PM"
       return(unname(private$AM_PM[temp]))
+    },
+    
+    day_of_week = function() {
+      day = self$date(format = "%w")
+      return(unname(private$DAY_NAMES[day]))
+    },
+    
+    month_name = function() {
+      month = self$month()
+      return(unname(private$MONTH_NAMES[month]))
     }
   )
 )
@@ -3810,8 +3820,8 @@ company_ar_AA = R6Class(
   inherit = company_init,
   cloneable = FALSE,
   private = list(
-    first_names = person_ar_AA$private_fields$first_names,
-    last_names = person_ar_AA$private_fields$last_names,
+    first_names = (person_ar_AA$new())$.__enclos_env__$first_names,
+    last_names = (person_ar_AA$new())$.__enclos_env__$last_names,
     first_name = (person_ar_AA$new())$first_name,
     last_name = (person_ar_AA$new())$last_name
   )
@@ -3824,8 +3834,8 @@ internet_ar_AA = R6Class(
   inherit = internet_init,
   cloneable = FALSE,
   private = list(
-    first_names = person_ar_AA$private_fields$first_names,
-    last_names = person_ar_AA$private_fields$last_names,
+    first_names = (person_ar_AA$new())$.__enclos_env__$first_names,
+    last_names = (person_ar_AA$new())$.__enclos_env__$last_names,
     first_name = (person_ar_AA$new())$first_name,
     last_name = (person_ar_AA$new())$last_name,
     replacements = list(
@@ -3883,7 +3893,7 @@ internet_ar_AA = R6Class(
       company = (company_fi_FI$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     },
     slug = function(string) {
       string = ifelse(missing(string),
@@ -4052,15 +4062,15 @@ address_ar_AA = R6Class(
   inherit = address_init,
   cloneable = FALSE,
   private = list(
-    first_names = person_ar_AA$private_fields$first_names,
-    last_names = person_ar_AA$private_fields$last_names,
+    first_names = (person_ar_AA$new())$.__enclos_env__$first_names,
+    last_names = (person_ar_AA$new())$.__enclos_env__$last_names,
     first_name = (person_ar_AA$new())$first_name,
     last_name = (person_ar_AA$new())$last_name,
 
-    countries =  sapply(date_time_ar_AA$private_fields$countries,
+    countries =  sapply((date_time_ar_AA$new())$.__enclos_env__$countries,
                         function(x) x[["name"]]),
 
-    alpha_2_country_codes = sapply(date_time_ar_AA$private_fields$countries,
+    alpha_2_country_codes = sapply((date_time_ar_AA$new())$.__enclos_env__$countries,
                                    function(x) x[["alpha-2-code"]]),
 
     city_prefixes = c(
@@ -4391,52 +4401,53 @@ address_ar_AA = R6Class(
 
     # address_formats = c("(street_address)\n(city), (state_abbr) (postcode)"),
 
-    address_formats = c(
-      "{street_address}\n{city}, {state_abbr} {postcode}" = 25,
+    address_formats = list(
+      c("{street_address}\n{city}, {state_abbr} {postcode}", 25),
       #  military address formatting.
-      "{military_apo}\nAPO {military_state} {postcode}" = 1,
-      "{military_ship} {last_name}\nFPO {military_state} {postcode}" = 1,
-      "{military_dpo}\nDPO {military_state} {postcode}" = 1),
+      c("{military_apo}\nAPO {military_state} {postcode}", 1),
+      c("{military_ship} {last_name}\nFPO {military_state} {postcode}", 1),
+      c("{military_dpo}\nDPO {military_state} {postcode}", 1)),
 
     secondary_address_formats = c('Apt. ###', 'Suite ###')
   ),
 
   public = list(
     address = function() {
-      temp = private$format_parse(sample(
-        names(private$address_formats), 1, prob = private$address_formats))
+      temp = private$format_parse(
+        private$random_element(private$address_formats))
       return(temp)
     },
 
     city_prefix = function(){
-      return(sample(private$city_prefixes, 1))
+      return(private$random_element(private$city_prefixes))
     },
 
     secondary_address = function() {
-      return(private$numerify(sample(private$secondary_address_formats, 1)))
+      return(private$numerify(
+        private$random_element(private$secondary_address_formats)))
     },
 
     state = function() {
-      return(sample(private$states, 1))
+      return(private$random_element(private$states))
     },
 
     state_abbr = function(include_territories = TRUE) {
       if (include_territories){
-        return(sample(private$states_and_territories_abbr, 1))
+        return(private$random_element(private$states_and_territories_abbr))
       } else{
-        return(sample(private$states_abbr, 1))
+        return(private$random_element(private$states_abbr))
       }
     },
 
     postcode = function() {
       rint = private$random_int(501, 99950)
-      zeros = str_c(rep(0, 5 - nchar(rint)), collapse = "")
+      zeros = str_c(rep(0, 5 - str_count(rint)), collapse = "")
       return(str_c(zeros, rint))
     },
 
     zipcode_plus4 = function() {
       rint = private$random_int(1, 9999)
-      zeros = str_c(rep(0, 4 - nchar(rint)), collapse = "")
+      zeros = str_c(rep(0, 4 - str_count(rint)), collapse = "")
       return(paste0(self$zipcode(), "-", zeros, rint))
     },
 
@@ -4445,7 +4456,7 @@ address_ar_AA = R6Class(
       #  :returns: A random postcode within the provided state abbreviation
       #  :param state_abbr: A state abbreviation
       if (missing(state_abbr)){
-        state_abbr = sample(private$states_abbr, 1)
+        state_abbr = private$random_element(private$states_abbr)
       }
 
       if (state_abbr %in% private$states_abbr){
@@ -4454,7 +4465,7 @@ address_ar_AA = R6Class(
             private$states_postcode[[state_abbr]][1],
             private$states_postcode[[state_abbr]][2]))
 
-        if (nchar(postcode) == 4){
+        if (str_count(postcode) == 4){
           postcode = str_c("0", postcode, collapse = "")
         }
         return(postcode)
@@ -4464,11 +4475,11 @@ address_ar_AA = R6Class(
     },
 
     military_ship = function(){
-      return(sample(private$military_ship_prefix, 1))
+      return(private$random_element(private$military_ship_prefix))
     },
 
     military_state = function(){
-      return(sample(private$military_state_abbr, 1))
+      return(private$random_element(private$military_state_abbr))
     },
 
     military_apo = function(){
@@ -4512,8 +4523,8 @@ credit_card_ar_AA = R6Class(
   inherit = credit_card_init,
   cloneable = FALSE,
   private = list(
-    first_names = person_ar_AA$private_fields$first_names,
-    last_names = person_ar_AA$private_fields$last_names,
+    first_names = (person_ar_AA$new())$.__enclos_env__$first_names,
+    last_names = (person_ar_AA$new())$.__enclos_env__$last_names,
     first_name = (person_ar_AA$new())$first_name,
     last_name = (person_ar_AA$new())$last_name
   )

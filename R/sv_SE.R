@@ -1498,7 +1498,8 @@ internet_sv_SE = R6Class(
     replacements = list(
       c('\u00e5', 'a'), c('\u00c5', 'A'),
       c('\u00e4', 'a'), c('\u00c4', 'A'),
-      c('\u00f6', 'o'), c('\u00d6', 'O')
+      c('\u00f6', 'o'), c('\u00d6', 'O'),
+      c("\u00e9", "e")
     )
   ),
   public = list(

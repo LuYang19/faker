@@ -2168,28 +2168,14 @@ address_fi_FI = R6Class(
 # internet --------------------------------
 internet_fi_FI = R6Class(
   "internet_fi_FI",
-  inherit = internet_init,
+  inherit = internet_en_US,
   cloneable = FALSE,
   private = list(
-    first_names = (person_fi_FI$new())$.__enclos_env__$private$first_names,
-    last_names = (person_fi_FI$new())$.__enclos_env__$private$last_names,
-
-    first_name = (person_fi_FI$new())$first_name,
-    last_name = (person_fi_FI$new())$last_name,
-
     free_email_domains = c(
       'gmail.com', 'googlemail.com', 'hotmail.com', 'suomi24.fi',
       'kolumbus.fi', 'luukku.com', 'surffi.net'),
 
     tlds = c('com', 'com', 'com', 'fi', 'fi', 'net', 'org')
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_fi_FI$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
-    }
   )
 )
 

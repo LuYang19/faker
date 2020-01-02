@@ -1839,29 +1839,6 @@ credit_card_es_ES = R6Class(
   )
 )
 
-
-
-## internet -----------------
-internet_es_ES = R6Class(
-  "internet_es_ES",
-  inherit = internet_en_US,
-  cloneable = FALSE,
-  private = list(
-    first_names = (person_es_ES$new())$.__enclos_env__$private$first_names,
-    last_names = (person_es_ES$new())$.__enclos_env__$private$last_names,
-    first_name = (person_es_ES$new())$first_name,
-    last_name = (person_es_ES$new())$last_name
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_es_ES$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
-    }
-  )
-)
-
 ## profile ------------------
 profile_es_ES = R6Class(
   "profile_es_ES",
@@ -1882,11 +1859,11 @@ profile_es_ES = R6Class(
                     (person_es_ES$new())$name_female(),
                     (person_es_ES$new())$name_male())
       temp = list(
-        "username" = (internet_es_ES$new())$user_name(),
+        "username" = (internet_en_US$new())$user_name(),
         "name" = name,
         "sex" = sex,
         "address" = (address_es_ES$new())$address(),
-        "mail" = (internet_es_ES$new())$free_email(),
+        "mail" = (internet_en_US$new())$free_email(),
         "birthdate" = (date_time_init$new())$date_of_birth()
       )
       return(temp)
@@ -1907,7 +1884,7 @@ profile_es_ES = R6Class(
                                (geo_init$new())$longitude()),
         "blood_group" = sample(c(
           "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"), 1),
-        "website" = replicate(sample(seq(4), 1), (internet_es_ES$new())$url())
+        "website" = replicate(sample(seq(4), 1), (internet_en_US$new())$url())
       )
 
       field = append(field, self$simple_profile(sex))

@@ -1815,6 +1815,7 @@ internet_pt_BR = R6Class(
       c("\u00e9","e"),
       c("\u00ea","e"),
       c("\u00ed","i"),
+      c("\u00f3","o"),
       c("\u00f4","o"),
       c("\u00f6","o"),
       c("\u00f5","o"),

@@ -1149,29 +1149,6 @@ address_pt_PT = R6Class(
   )
 )
 
-# internet --------------------------------------
-internet_pt_PT = R6Class(
-  "internet_pt_PT",
-  inherit = internet_init,
-  cloneable = FALSE,
-  private = list(
-    first_names = (person_pt_PT$new())$.__enclos_env__$private$first_names,
-    last_names = (person_pt_PT$new())$.__enclos_env__$private$last_names,
-    first_name = (person_pt_PT$new())$first_name,
-    last_name = (person_pt_PT$new())$last_name,
-    safe_email_tlds = c('com', 'net', 'pt', 'pt'),
-    free_email_domains = c('gmail.com', 'hotmail.com', 'clix.pt', 'sapo.pt'),
-    tlds = c('com', 'com', 'com', 'net', 'org', 'pt', 'pt', 'pt')
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_pt_PT$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = TRUE))
-    }
-  )
-)
 # phone_number -------------------------------
 phone_number_pt_PT = R6Class(
   "phone_number_pt_PT",
@@ -1270,11 +1247,11 @@ profile_pt_PT = R6Class(
                     (person_pt_PT$new())$name_female(),
                     (person_pt_PT$new())$name_male())
       temp = list(
-        "username" = (internet_pt_PT$new())$user_name(),
+        "username" = (internet_en_US$new())$user_name(),
         "name" = name,
         "sex" = sex,
         "address" = (address_pt_PT$new())$address(),
-        "mail" = (internet_pt_PT$new())$free_email(),
+        "mail" = (internet_en_US$new())$free_email(),
         "birthdate" = (date_time_init$new())$date_of_birth()
       )
       return(temp)
@@ -1295,7 +1272,7 @@ profile_pt_PT = R6Class(
                                (geo_init$new())$longitude()),
         "blood_group" = sample(c(
           "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"), 1),
-        "website" = replicate(sample(seq(4), 1), (internet_pt_PT$new())$url())
+        "website" = replicate(sample(seq(4), 1), (internet_en_US$new())$url())
       )
 
       field = append(field, self$simple_profile(sex))

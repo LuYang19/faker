@@ -2589,7 +2589,7 @@ internet_en_NZ = R6Class(
       company = (company_en_NZ$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     }
   )
 )

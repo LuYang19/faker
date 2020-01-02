@@ -2568,18 +2568,6 @@ date_time_ru_RU = R6Class(
       "11" = "\u041d\u043e\u044f\u0431\u0440\u044c",
       "12" = "\u0414\u0435\u043a\u0430\u0431\u0440\u044c"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 

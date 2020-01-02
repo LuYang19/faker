@@ -2024,26 +2024,13 @@ address_fa_IR = R6Class(
 # internet --------------------------------
 internet_fa_IR = R6Class(
   "internet_fa_IR",
-  inherit = internet_init,
+  inherit = internet_en_US,
   cloneable = FALSE,
   private = list(
-    first_names = (person_fa_IR$new())$.__enclos_env__$private$first_names,
-    last_names = (person_fa_IR$new())$.__enclos_env__$private$last_names,
-    first_name = (person_fa_IR$new())$first_name,
-    last_name = (person_fa_IR$new())$last_name,
-
     safe_email_tlds = c('com', 'net', 'ir', 'org'),
     free_email_domains = c('chmail.ir', 'mailfa.com',
                            'gmail.com', 'hotmail.com', 'yahoo.com'),
     tlds = c('com', 'com', 'com', 'net', 'org', 'ir', 'ir', 'ir')
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_fa_IR$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
-    }
   )
 )
 # job ---------------------------------------

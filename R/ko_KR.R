@@ -758,18 +758,6 @@ date_time_ko_KR = R6Class(
       "11" = "11\uc6d4",
       "12" = "12\uc6d4"
     )
-  ),
-
-  public = list(
-    day_of_week = function() {
-      day = self$date(format = "%w")
-      return(unname(private$DAY_NAMES[day]))
-    },
-
-    month_name = function() {
-      month = self$month()
-      return(unname(private$MONTH_NAMES[month]))
-    }
   )
 )
 
@@ -1293,27 +1281,14 @@ address_ko_KR = R6Class(
 # internet -----------------------------------------------
 internet_ko_KR = R6Class(
   "internet_ko_KR",
-  inherit = internet_init,
+  inherit = internet_en_US,
   cloneable = FALSE,
   private = list(
-    first_names = (person_ko_KR$new())$.__enclos_env__$private$first_names,
-    last_names = (person_ko_KR$new())$.__enclos_env__$private$last_names,
-    first_name = (person_ko_KR$new())$first_name,
-    last_name = (person_ko_KR$new())$last_name,
-
     free_email_domains = c(
       'gmail.com', 'daum.net', 'hotmail.com', 'hanmail.net',
       'naver.com', 'nate.com', 'live.com', 'dreamwiz.com'
     ),
     tlds = c('com', 'com', 'com', 'kr', 'kr', 'net', 'org')
-  ),
-  public = list(
-    domain_word = function() {
-      company = (company_ko_KR$new())$company()
-      company_elements = str_split(company, " ")[[1]]
-      company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = TRUE))
-    }
   )
 )
 # job -------------------------------------------

@@ -869,6 +869,38 @@ credit_card_zh_CN = R6Class(
 
 
 
+date_time_zh_CN = R6Class(
+  "date_time_zh_CN",
+  inherit = date_time_init,
+  cloneable = FALSE,
+  private = list(
+    DAY_NAMES = c(
+      "0" = "\u661f\u671f\u65e5",
+      "1" = "\u661f\u671f\u4e00",
+      "2" = "\u661f\u671f\u4e8c",
+      "3" = "\u661f\u671f\u4e09",
+      "4" = "\u661f\u671f\u56db",
+      "5" = "\u661f\u671f\u4e94",
+      "6" = "\u661f\u671f\u516d"
+    ),
+    
+    MONTH_NAMES = c(
+      "01" = "\u4e00\u6708",
+      "02" = "\u4e8c\u6708",
+      "03" = "\u4e09\u6708",
+      "04" = "\u56db\u6708",
+      "05" = "\u4e94\u6708",
+      "06" = "\u516d\u6708",
+      "07" = "\u4e03\u6708",
+      "08" = "\u516b\u6708",
+      "09" = "\u4e5d\u6708",
+      "10" = "\u5341\u6708",
+      "11" = "\u5341\u4e00\u6708",
+      "12" = "\u5341\u4e8c\u6708"
+    )
+  )
+)
+
 # address --------------------------------------
 address_zh_CN = R6Class(
   "address_zh_CN",

@@ -2665,8 +2665,8 @@ person_en_US = R6Class(
 
 ## address ------------------------
 address_en_US = R6Class(
-  "address_en",
-  inherit = address_init,
+  "address_en_US",
+  inherit = address_en,
   cloneable = FALSE,
   private = list(
     first_names = (person_en_US$new())$.__enclos_env__$private$first_names,
@@ -4176,7 +4176,7 @@ internet_en_US = R6Class(
       company = (company_en_US$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     },
 
     slug = function(string) {

@@ -3625,6 +3625,7 @@ internet_bg_BG = R6Class(
       c("\u042f","ya"),
       c("\u0431","b"),
       c("\u0432","v"),
+      c("\u0433","r"),
       c("\u0434","d"),
       c("\u0436","zh"),
       c("\u0437","z"),
@@ -3692,7 +3693,7 @@ internet_bg_BG = R6Class(
       company = (company_bg_BG$new())$company()
       company_elements = str_split(company, " ")[[1]]
       company = private$to_ascii(company_elements[1])
-      return(private$slugify(company, allow_unicode = FALSE))
+      return(private$slugify(company, allow_unicode = TRUE))
     }
   )
 )

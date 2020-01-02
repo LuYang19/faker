@@ -5924,7 +5924,7 @@ internet_init = R6Class(
     },
 
     user_name = function() {
-      pattern = sample(private$user_name_formats, 1)
+      pattern = private$random_element(private$user_name_formats)
       username = private$to_ascii(str_to_lower(
         private$bothify(private$format_parse(pattern)),
         locale = private$locale)

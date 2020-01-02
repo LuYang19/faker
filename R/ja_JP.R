@@ -1412,7 +1412,7 @@ lorem_ja_JP = R6Class(
 # internet --------------------------------------------
 internet_ja_JP = R6Class(
   "internet_ja_JP",
-  inherit = internet_init,
+  inherit = internet_en_US,
   cloneable = FALSE,
   private = list(
     first_romanized_names = (person_ja_JP$new())$.__enclos_env__$private$first_romanized_names,
