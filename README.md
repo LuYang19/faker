@@ -9,6 +9,7 @@ devtools::install_github("LuYang19/faker")
 
 ## 使用指南
 ```r
+library(faker)
 fake = faker(locale = "zh_CN")
 ```
 faker通过对locale的设置来实现多种不同语言之间的切换(默认locale = "en_US")，这里有几个比较常见的语言代号：
