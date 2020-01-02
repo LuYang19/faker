@@ -1,0 +1,90 @@
+Package: faker
+Type: Package
+Title: A package for fake data
+Version: 0.1.0
+Author: Jiangtao Wang
+Maintainer: Jiangtao Wang <jiangtao2107@163.com>
+Description: Faker is a R package that generates fake data for you. 
+License: GPL
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    digest,
+    gmp,
+	gtools,
+    iptools,
+    lubridate,
+    parsedate,
+    R6,
+    stringr
+RoxygenNote: 6.1.1
+Collate: 
+    'init.R'
+	'en.R'
+	'en_US.R'
+	'la.R'
+	'ar_AA.R'
+	'ar_EG.R'
+	'ar_JO.R'
+	'ar_PS.R'
+	'ar_SA.R'
+	'bg_BG.R'
+	'bs_BA.R'
+	'cs_CZ.R'
+	'de.R'
+	'de_DE.R'
+	'de_AT.R'
+	'fr_FR.R'
+	'fr_CH.R'
+	'de_CH.R'
+	'dk_DK.R'
+	'el_CY.R'
+	'el_GR.R'
+	'en_AU.R'
+	'en_CA.R'
+	'en_GB.R'
+	'en_IE.R'
+	'en_NZ.R'
+	'en_TH.R'
+    'es.R'
+    'es_ES.R'
+    'es_CA.R'
+    'es_MX.R'
+    'et_EE.R'
+    'fa_IR.R'
+    'fi_FI.R'
+    'he_IL.R'
+    'hi_IN.R'
+    'hr_HR.R'
+    'hu_HU.R'
+    'hy_AM.R'
+    'id_ID.R'
+	'it_IT.R'
+	'ja_JP.R'
+	'ka_GE.R'
+	'ko_KR.R'
+	'lb_LU.R'
+	'lt_LT.R'
+	'lv_LV.R'
+	'mt_MT.R'
+	'ne_NP.R'
+	'nl_BE.R'
+	'nl_NL.R'
+	'no_NO.R'
+	'pl_PL.R'
+	'pt_BR.R'
+	'pt_PT.R'
+	'ro_RO.R'
+	'ru_RU.R'
+	'sk_SK.R'
+	'sl_SI.R'
+	'sv_SE.R'
+	'th_TH.R'
+	'tr_TR.R'
+	'tw_GH.R'
+	'uk_UA.R'
+	'zh_CN.R'
+	'zh_TW.R'
+	'faker.R'
+
+
